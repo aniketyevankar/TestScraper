@@ -27,7 +27,7 @@ for i in range(len(df['Street Address'])):
     value = value.replace(',',' ')
     value = value.replace('  ',' ')
     try:
-        exact_address = FindDetails.calculate(value)
+        exact_address = FindDetails.findAddress(value)
         exact_address = exact_address.replace(',',' ')
         exact_address = exact_address.replace('  ',' ')
     except Exception as e:
