@@ -5,7 +5,7 @@ import os
 
 raw_arr = os.listdir()
 
-filename = 'C:\\Users\\ayevankar-c\\Desktop\\tkinter\\Book1.xlsx'
+filename = 'Book1.xlsx'
 df = pd.read_excel(filename)
 
 #Notice here we used two '\' backslashesh
