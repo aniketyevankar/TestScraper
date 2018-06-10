@@ -60,5 +60,6 @@ for i in sheet.col_values(1):
         pass
 
     address = value + ',' + add1
+    pyautogui.hotkey('ctrl', 'w')
     MyFun_CSV(address)
 
