@@ -41,8 +41,8 @@ raw_arr = os.listdir()
 book2 = xlwt.Workbook(encoding="utf-8")
 sheet1 = book2.add_sheet("Address Book")
 
-if 'csvfile.csv' in raw_arr:
-    os.remove(os.getcwd()+'\\csvfile.csv')
+if 'spreadsheet.xls' in raw_arr:
+    os.remove(os.getcwd()+'\\spreadsheet.xls')
 
 MyFun_CSV('Street Address, Searched Address')
 count = 0
@@ -77,6 +77,5 @@ for i in range(len(sheet.col_values(1))):
     sheet1.write(i, 1, c_add)
     sheet1.write(i, 1, company_name)
     sheet1.write(i, 1, company_address)
-    
-book2.save("spreadsheet.xls")
+    book2.save("spreadsheet.xls")
 
