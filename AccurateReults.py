@@ -74,8 +74,8 @@ for i in range(len(sheet.col_values(1))):
         pass
 
     sheet1.write(i, 1, c_name)
-    sheet1.write(i, 1, c_add)
-    sheet1.write(i, 1, company_name)
-    sheet1.write(i, 1, company_address)
+    sheet1.write(i, 2, c_add)
+    sheet1.write(i, 3, company_name)
+    sheet1.write(i, 4, company_address)
     book2.save("spreadsheet.xls")
 
