@@ -1,0 +1,67 @@
+import pyautogui
+import clipboard
+import time
+import csv
+import os
+import xlrd
+import webbrowser
+
+########################################
+filename = 'CA Records.xlsx' ###########
+########################################
+
+def tripleClick():
+    pyautogui.click()
+    pyautogui.click()
+    pyautogui.click()
+
+def copyAll():
+    pyautogui.click(1200,185)
+    time.sleep(1)
+    pyautogui.hotkey('ctrl', 'a')
+    pyautogui.hotkey('ctrl', 'c')
+    time.sleep(2)
+    raw_text = clipboard.paste()
+    add1 = raw_text.split('Map of ')[1].split('\r\n')[0]
+    print(add1)
+    return (add1)
+
+def MyFun_CSV(test_string):
+    f = open('csvfile.csv','a')
+    f.write(test_string+'\n')
+    f.close()
+
+book = xlrd.open_workbook(filename)
+sheet = book.sheets()[0]
+raw_arr = os.listdir()
+
+if 'csvfile.csv' in raw_arr:
+    os.remove(os.getcwd()+'\\csvfile.csv')
+
+MyFun_CSV('Street Address, Searched Address')
+count = 0
+
+for i in sheet.col_values(1):
+    value = str(i)
+    value = value.replace(',',' ')
+    value = value.replace('  ',' ')
+
+    base_url = 'https://www.google.com/search?q='
+    
+    query = str(value)
+    query = query.replace(' ','+')
+
+    url = base_url+query
+
+    webbrowser.open_new_tab(url)
+    time.sleep(5)
+
+    try:
+        add1 = copyAll()
+    except:
+        add1 = ''
+        pass
+
+    address = value + ',' + add1
+    MyFun_CSV(address)
+
