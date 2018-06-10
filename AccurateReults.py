@@ -44,7 +44,6 @@ sheet1 = book2.add_sheet("Address Book")
 if 'spreadsheet.xls' in raw_arr:
     os.remove(os.getcwd()+'\\spreadsheet.xls')
 
-MyFun_CSV('Street Address, Searched Address')
 count = 0
 
 for i in range(len(sheet.col_values(1))):
@@ -77,5 +76,7 @@ for i in range(len(sheet.col_values(1))):
     sheet1.write(i, 2, c_add)
     sheet1.write(i, 3, company_name)
     sheet1.write(i, 4, company_address)
+    count = count+1
+    print('Records fetched:',count)
     book2.save("spreadsheet.xls")
 
